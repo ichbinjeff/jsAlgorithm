@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>run code</title>
+</head>
+<body>
+<input list="browser">
+<datalist id="browser">
+	<option value="chrome"></option>
+	<option value="safari"></option>
+	<option value="firefox"></option>
+	<option value="opera"></option>
+</datalist>
+
+<button>click me</button>
+<script type="text/javascript" src="stack.js"></script>
+<script type="text/javascript" src="toBinary.js"></script>
+<script type="text/javascript" src="bst.js"></script>
+<script type="text/javascript" src="search.js"></script>
+<script type="text/javascript" src="sort.js"></script>
+<script type="text/javascript" src="linkedlist.js"></script>
+
+<script type="text/javascript" src="puzzle.js"></script>
+
+
+<script type="text/javascript">
+	var stack = new Stack();
+	stack.push(1);
+	stack.push(2);
+	stack.push(3);
+
+	stack.print();
+
+	console.log(toBinary(70));
+	var tree = new BinarySearchTree();
+	tree.insert(11);
+	tree.insert(7);
+	tree.insert(15);
+	tree.insert(5);
+	tree.insert(3);
+	tree.insert(9);
+	tree.insert(8);
+	tree.insert(10);
+	tree.insert(13);
+	tree.insert(12);
+	tree.insert(14);
+	tree.insert(20);
+	tree.insert(18);
+	tree.insert(25);
+	tree.insert(6);
+	tree.insert(29);
+	tree.insert(35);
+	var print = function(key){
+		console.log(key);
+	}
+	tree.levelOrderTraverse(print);
+	//tree.preOrderTraverse(print);
+	//tree.postOrderTraverse(print);
+	console.log("min is: ", tree.min());
+	console.log("max is: ", tree.max());
+	tree.remove(15);
+
+	// var testArr = [2,5,1,9,8,7];
+	// //bubbleSort(testArr);
+	// //insertionSort(testArr);
+	// mergeSort(testArr);
+	// var testA = [-1, 2, 2, -3, 4, -2, 0, 1, -8, 2];
+	
+	// quicksort(testArr, 0, testArr.length - 1);
+	// console.log(testArr);
+	// var findMaxSum = function(arr) {
+	// 	var max = 0,
+	// 		sum = 0;
+	// 		currentIndex = 0;
+	// 	for(var i = 0; i < arr.length; i++) {
+	// 		sum += arr[i];
+	// 		if(sum > max) {
+	// 			max = sum;
+	// 			currentIndex = i; 
+	// 		}
+	// 	}
+	// 	console.log(currentIndex);
+	// 	return arr.slice(0, currentIndex + 1);
+	// }
+
+	// //abccba
+	// //abba 
+	// var isPlalindrome = function(teststr) {
+	// 	return teststr === teststr.split("").reverse().join("");
+	// }
+
+
+	// var findPrimeFactor = function(n) {
+	// 	var factors = [],
+	// 	 	divisor = 2;
+
+	// 	while(n > 2) {
+	// 		if(n % divisor === 0) {
+	// 			factors.push(divisor);
+	// 			n = n / divisor;
+	// 		}
+	// 		else{
+	// 			divisor++;
+	// 		}
+	// 	}
+	// 	return factors;
+	// }
+
+	
+
+</script>
+</body>
+</html>
