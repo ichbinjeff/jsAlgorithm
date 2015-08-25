@@ -153,11 +153,11 @@ function mergeTwoSortedArr(left, right) {
 }
 
 function stringReverse(str) {
-	var charArr = str.split(" ");
+	var charArr = str.split("");
 	var backWardIndex = charArr.length - 1;
 	var forwardIndex = 0;
 	
-	while(forwardIndex <= backWardIndex) {
+	while(forwardIndex < backWardIndex) {
 			var temp = charArr[backWardIndex];
 			charArr[backWardIndex] = charArr[forwardIndex];
 			charArr[forwardIndex] = temp;
@@ -166,32 +166,32 @@ function stringReverse(str) {
 			backWardIndex--;
 	}
 
-	return charArr.join(" ");
+	return charArr.join("");
 }
 
-//aabbccdeef
-function compress(str) {
-	var charArr = str.split("");
-	var result = [];
-	var count = 1;
+// //aabbccdeef
+// function compress(str) {
+// 	var charArr = str.split("");
+// 	var result = [];
+// 	var count = 1;
 
-	for(var i = 0; i < charArr.length - 1; i++) {
-		if(charArr[i] === charArr[i + 1]) {
-			count++;
-		}
-		else{
-			result.push(charArr[i])
-			if(count !== 1) {
-				result.push(count);
-			}
-			count = 1;
-		}
-	}
-	result.push(charArr[charArr.length - 1]);
-	if(count !== 1) result.push(count);
+// 	for(var i = 0; i < charArr.length - 1; i++) {
+// 		if(charArr[i] === charArr[i + 1]) {
+// 			count++;
+// 		}
+// 		else{
+// 			result.push(charArr[i])
+// 			if(count !== 1) {
+// 				result.push(count);
+// 			}
+// 			count = 1;
+// 		}
+// 	}
+// 	result.push(charArr[charArr.length - 1]);
+// 	if(count !== 1) result.push(count);
 
-	return result.join("");
-}
+// 	return result.join("");
+// }
 
 
 function findFirstNonRepeat(str) {
@@ -241,32 +241,82 @@ function missingNumber(arr) {
 	return expectedSum - sum;
 }
 
-function indexOf(str, substr) {
-	var strLen = str.length,
-		substrLen = substr.length,
-		index = -1,
-		j = 0;
+// function indexOf(str, substr) {
+// 	var strLen = str.length,
+// 		substrLen = substr.length,
+// 		index = -1,
+// 		j = 0;
 
-	for(var i = 0; i < strLen; i++) {
-		debugger;
-		if(str[i] === substr[j]) {
-			if(j === 0) {
-				index = i;
+// 	for(var i = 0; i < strLen; i++) {
+// 		if(str[i] === substr[j]) {
+// 			if(j === 0) {
+// 				index = i;
+// 			}
+// 			j++;
+// 		}
+// 		else {
+// 			if(j === substrLen) {
+// 				return index;
+// 			}
+// 			else{
+// 				j = 0;
+// 			}
+// 		}
+// 	}
+
+// 	return index;
+
+// }
+// abcde  bc  hi
+function indexOf(str, match) {
+	var len = str.length;
+	var index = 0;
+	for(var i = 0; i < len; i++) {
+		if(str[i] == match[index]) {
+			// in this case, we found the match
+			if(index + 1 === match.length) {
+				return i - index;
 			}
-			j++;
+			else {
+				index ++;
+			}
 		}
 		else {
-			if(j === substrLen) {
-				return index;
-			}
-			else{
-				j = 0;
-			}
+			index = 0;
+		}
+	}
+	return -1;
+}
+
+function replaceStr(str, match, replace) {
+	var index = str.indexOf(match),
+	    len = str.length,
+		part1, part2;
+	
+	if(index === -1) return -1;
+
+	part1 = str.substring(0, index);
+	part2 = str.substring(index + match.length, len);
+
+	return part1 + replace + part2;
+}
+
+//abcd dcba  abcde  edcba
+function reverse(str) {
+	var charArr = str.split(""),
+		len = str.length,
+		temp = "",
+		cursor = 0;
+
+	for(var i = len - 1; i >= 0; i--) {
+		if(cursor < i) {
+			temp = charArr[i];
+			charArr[i] = charArr[cursor]
+			charArr[cursor] = temp; 
+			cursor ++;
 		}
 	}
 
-	return index;
-
+	return charArr.join("");
 }
-
 

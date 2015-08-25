@@ -51,10 +51,8 @@ function BinarySearchTree() {
 
 	this.levelOrderTraverse = function(callback) {
 		var queue = [];
-		debugger;
 		queue.push(root);
 		while(queue.length) {
-			debugger;
 			var node = queue.shift();
 			callback(node.key);
 			if(node.left) {

@@ -11,7 +11,6 @@ var head = new ListNode(1, first);
 
 var print = function(head) {
 	if(head == null) {
-		debugger;
 		return 10;
 	}
 	console.log('print', head.val);
