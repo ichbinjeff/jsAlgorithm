@@ -301,6 +301,42 @@ function replaceStr(str, match, replace) {
 	return part1 + replace + part2;
 }
 
+//abcd
+//b
+//ef
+//aefcd
+
+
+//space complexity o(1), time complexity o(n*m)
+function replaceStr2(str, match, replace) {
+	var index = str.indexOf(match);
+	var len = str.length;
+	var charArr = str.split("");
+	var newLen = 0;
+
+	if(index !== -1) {
+		newLen = len + replace.length - match.length - 1;
+
+		for(var i = len - 1; i >= 0; i--) {
+			if(i === index + match.length - 1) {
+				for(var j = replace.length - 1; j >=0; j--) {
+					charArr[newLen] = replace[j];
+					newLen --;
+				}
+				i -= match.length - 1;
+				
+			}
+			else {
+				charArr[newLen] = charArr[i];
+				newLen --;
+			}
+		}
+		return charArr.join("");
+		
+	}
+	return -1;
+}
+
 //abcd dcba  abcde  edcba
 function reverse(str) {
 	var charArr = str.split(""),
@@ -318,5 +354,51 @@ function reverse(str) {
 	}
 
 	return charArr.join("");
+}
+
+var printme = (function() {
+	var _item = [];
+	var printme = function(val) {
+		if (!val) {
+			console.log(_item.join(" "));
+			_item = [];
+			return;
+		}
+		_item.push(val);
+		return printme;
+	}
+
+	return printme;
+})()
+
+var matrix = [
+  [1 ,2 ,3 ,6 ,5],
+  [16,0,23,22,6],
+  [15,17,0,21,7],
+  [14,0,19,20,10],
+  [13,14,11,0,9]
+];
+
+var row = [];
+var col = [];
+function clearMatrix(matrix) {
+	for (var i = 0; i < matrix.length; i++) {
+		for (var j = 0; j < matrix[i].length; j++) {
+			if (matrix[i][j] == 0) {
+				row[i] = true;
+				col[j] = true;
+			}
+		}
+	}
+
+	for (var i = 0; i < matrix.length; i++) {
+		for (var j = 0; j < matrix[i].length; j++) {
+			if (row[i] || col[j]) {
+				matrix[i][j] = 0;
+			}
+		}
+	}
+
+	return matrix;
 }
 

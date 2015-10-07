@@ -84,5 +84,8 @@ function compress(str) {
 	}
 	result.push(counter);
 	return result.join("");
-
 }
+
+//reverse matrix
+
+
